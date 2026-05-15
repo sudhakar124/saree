@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/saree.db:/app/saree.db
+    environment:
+      - DATABASE_URL=sqlite:///./saree.db
+
