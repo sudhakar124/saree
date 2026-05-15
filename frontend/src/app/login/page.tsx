@@ -24,7 +24,7 @@ export default function Login() {
       formData.append('username', email);
       formData.append('password', password);
 
-      const response = await axios.post('http://localhost:8000/login', formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/login', formData);
       const user = await login(response.data.access_token);
       
       if (user?.role === 'admin') {

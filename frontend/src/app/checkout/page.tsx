@@ -30,7 +30,7 @@ export default function Checkout() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/orders/', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/orders/', {
         full_name: fullName,
         address,
         city,

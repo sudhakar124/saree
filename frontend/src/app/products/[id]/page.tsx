@@ -20,7 +20,7 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/products/${id}`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/products/${id}`);
         setProduct(response.data);
         // Default to 1 instead of forcing MOQ
         setQuantity(1);
@@ -43,7 +43,7 @@ export default function ProductDetails() {
     setAddingToCart(true);
     try {
       await axios.post(
-        'http://localhost:8000/cart/', 
+        `${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/cart/', 
         { product_id: product.id, quantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );

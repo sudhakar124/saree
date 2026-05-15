@@ -22,7 +22,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:8000/register', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/register', {
         name,
         email,
         password,

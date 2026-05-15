@@ -23,7 +23,7 @@ export default function Cart() {
     if (!token) return;
     const fetchCart = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/cart/', {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/cart/', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setItems(response.data);
@@ -39,7 +39,7 @@ export default function Cart() {
 
   const removeItem = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:8000/cart/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/cart/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setItems(items.filter(item => item.id !== id));

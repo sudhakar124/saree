@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchUser = async (authToken: string) => {
     try {
-      const response = await axios.get('http://localhost:8000/me', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}'}/me`, {
         headers: { Authorization: `Bearer ${authToken}` }
       });
       setUser(response.data);
