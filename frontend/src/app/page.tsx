@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/products/');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/products/`);
         setProducts(response.data);
       } catch (error) {
         console.error("Failed to fetch products", error);

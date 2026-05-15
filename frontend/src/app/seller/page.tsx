@@ -127,7 +127,7 @@ export default function SellerDashboard() {
     }
 
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/seller/products/${editingProduct.id}`, { ...editingProduct, image_url: imageUrl }, {
+      await axios.put(`http://localhost:8000/seller/products/${editingProduct.id}`, { ...editingProduct, image_url: imageUrl }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsEditing(false);
@@ -143,7 +143,7 @@ export default function SellerDashboard() {
   const handleDeleteProduct = async (productId: number) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/seller/products/${productId}`, {
+      await axios.delete(`http://localhost:8000/seller/products/${productId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchProducts();

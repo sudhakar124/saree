@@ -39,7 +39,7 @@ export default function Cart() {
 
   const removeItem = async (id: number) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/cart/${id}`, {
+      await axios.delete(`http://localhost:8000/cart/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setItems(items.filter(item => item.id !== id));

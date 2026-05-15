@@ -24,7 +24,7 @@ export default function OrderConfirmation() {
 
     const fetchOrder = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/orders/${orderId}`, {
+        const response = await axios.get(`http://localhost:8000/orders/${orderId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setOrderData(response.data);

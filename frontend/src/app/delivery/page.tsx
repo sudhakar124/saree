@@ -56,7 +56,7 @@ export default function DeliveryDashboard() {
 
   const updateDeliveryStatus = async (deliveryId: number, status: string, trackingNum?: string) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/delivery/${deliveryId}/status`, { 
+      await axios.put(`http://localhost:8000/delivery/${deliveryId}/status`, { 
         status, 
         tracking_number: trackingNum || undefined
       }, {
@@ -73,7 +73,7 @@ export default function DeliveryDashboard() {
     if (!selectedDelivery) return;
 
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/delivery/${selectedDelivery.id}/status`, { 
+      await axios.put(`http://localhost:8000/delivery/${selectedDelivery.id}/status`, { 
         status: selectedDelivery.status,
         driver_name: driverName,
         vehicle_number: vehicleNumber,

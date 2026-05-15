@@ -69,7 +69,7 @@ export default function AdminDashboard() {
   const handleDeleteSeller = async (userId: number) => {
     if (!confirm('Are you sure you want to delete this seller?')) return;
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/sellers/${userId}`, {
+      await axios.delete(`http://localhost:8000/admin/sellers/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers(); // refresh
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
 
   const handleModerateProduct = async (productId: number, isApproved: boolean) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/products/${productId}/moderate?is_approved=${isApproved}`, {}, {
+      await axios.put(`http://localhost:8000/admin/products/${productId}/moderate?is_approved=${isApproved}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchProducts();
@@ -122,7 +122,7 @@ export default function AdminDashboard() {
 
   const handleVerifyUser = async (userId: number) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/users/${userId}/verify`, {}, {
+      await axios.put(`http://localhost:8000/admin/users/${userId}/verify`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers();
@@ -133,7 +133,7 @@ export default function AdminDashboard() {
 
   const handleUpdateOrderStatus = async (orderId: number, newStatus: string) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/orders/${orderId}/status`, { status: newStatus }, {
+      await axios.put(`http://localhost:8000/admin/orders/${orderId}/status`, { status: newStatus }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchOrders(); // refresh
