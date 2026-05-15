@@ -21,7 +21,7 @@ export default function OrderHistory() {
 
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/orders/', {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/orders/`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setOrders(response.data);
@@ -40,7 +40,7 @@ export default function OrderHistory() {
       // For each item in the past order, add to cart
       for (const item of order.items) {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/cart/', 
+          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/cart/`, 
           { product_id: item.product.id, quantity: item.quantity },
           { headers: { Authorization: `Bearer ${token}` } }
         );

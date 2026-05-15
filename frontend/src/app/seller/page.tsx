@@ -46,7 +46,7 @@ export default function SellerDashboard() {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/seller/dashboard-stats', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/seller/dashboard-stats`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStats(response.data);
@@ -58,7 +58,7 @@ export default function SellerDashboard() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/seller/products', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/seller/products`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProducts(response.data);
@@ -73,7 +73,7 @@ export default function SellerDashboard() {
     formData.append('file', file);
     try {
       setIsUploading(true);
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/products/upload', formData, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/products/upload`, formData, {
         headers: { 
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`
@@ -100,7 +100,7 @@ export default function SellerDashboard() {
     }
 
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/seller/products', { ...newProduct, image_url: imageUrl }, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/seller/products`, { ...newProduct, image_url: imageUrl }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsAddingProduct(false);
@@ -155,7 +155,7 @@ export default function SellerDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/seller/orders', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/seller/orders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(response.data);

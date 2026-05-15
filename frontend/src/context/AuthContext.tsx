@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '@/lib/api';
 
 interface User {
   id: number;
@@ -37,14 +37,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchUser = async (authToken: string) => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}'}/me`, {
-        headers: { Authorization: `Bearer ${authToken}` }
-      });
+      // api client handles base URL and Authorization header
+      const response = await api.get('/me');
       setUser(response.data);
       return response.data;
     } catch (error: any) {
       console.error("Failed to fetch user", error);
-      // Only logout if the error is 401 Unauthorized
       if (error.response?.status === 401) {
         logout();
       }

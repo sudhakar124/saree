@@ -43,7 +43,7 @@ export default function ProductDetails() {
     setAddingToCart(true);
     try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/cart/', 
+        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/cart/`, 
         { product_id: product.id, quantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );

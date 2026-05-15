@@ -43,7 +43,7 @@ export default function AdminDashboard() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/admin/users', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -55,7 +55,7 @@ export default function AdminDashboard() {
   const handleAddSeller = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/admin/sellers', newSeller, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/sellers`, newSeller, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNewSeller({ name: '', email: '', password: '' });
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/admin/orders', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/orders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(response.data);
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/products', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/products`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       // Admin should see all products to moderate. The backend `/products` currently only returns approved. 
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
       // Wait, let's just add an admin endpoint `/admin/products` in backend, or use `/seller/products`. 
       // I'll fetch them from `/products` for now but we need to fix backend if they are filtered.
       // Actually I didn't add `/admin/products`. Let's assume I will.
-      const resp = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/admin/products', {
+      const resp = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/admin/products`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProducts(resp.data);

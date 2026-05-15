@@ -27,7 +27,7 @@ export default function DeliveryDashboard() {
   
   const fetchDeliveries = useCallback(async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}'}/delivery/assigned', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/delivery/assigned`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       // Assign a random tracking ID to deliveries that don't have one
